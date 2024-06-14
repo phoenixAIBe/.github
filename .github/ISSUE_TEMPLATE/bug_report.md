@@ -7,26 +7,23 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe the bug** <br>
+_A clear and concise description of what the bug is._ <br>
 
-**To Reproduce**
+**To Reproduce** <br>
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+1. ...
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Expected behavior** <br>
+_A clear and concise description of what you expected to happen._ <br>
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Screenshots** <br>
+_If applicable, add screenshots to help explain your problem._ <br>
 
-**Environment (please complete the following information):**
- - Device: [e.g. Xavier NX, Orin Nano]
- - Jetpack [e.g. 4.6.3, 5.0.0,...]
- - Release [e.g. v1.0.0]
+**Environment (please complete the following information):** <br>
+ - Device : [e.g. Xavier NX, Orin Nano]
+ - Jetpack : [e.g. 4.6.3, 5.0.0,...]
+ - Release : [e.g. v1.0.0]
 
-**Additional context**
-Add any other context about the problem here.
+**Additional context** <br>
+_Add any other context about the problem here._ <br>

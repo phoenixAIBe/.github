@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Request a new feature
+name: New feature
+about: Issue for a new feature
 title: "[FEATURE]"
 labels: feature
 assignees: ''

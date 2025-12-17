@@ -20,6 +20,7 @@
 - [ ] **Sonar**: SonarQube analysis passed successfully.
 - [ ] **PR content**: The PR does contain only changes about one feature.
 - [ ] **PR title**: The PR title follows the convention: `[FEATURE|FIX|...] Short description`.
+- [ ] **README**: The README file has been updated.
 
 
 # Merge Develop To Staging

@@ -8,7 +8,7 @@
 
 
 ## Validation Checklist
-- [ ] **Spec**: Specifications have been written and validated.
+- [ ] **Spec**: Specifications/Swagger have been written and validated.
 - [ ] **Tests**: New or modified features have been tested.
 - [ ] **Labels**: At least one label has been added (`feature`, `fix`, `chore`, etc.).
 - [ ] **Description**: The **What** and **Why** sections are properly filled.

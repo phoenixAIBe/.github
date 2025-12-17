@@ -19,6 +19,7 @@
 - [ ] **Secrets**: Github environment variables are configured with the **correct dev versions**.
 - [ ] **Sonar**: SonarQube analysis passed successfully.
 - [ ] **PR content**: The PR does contain only changes about one feature.
+- [ ] **PR title**: The PR title follows the convention: `[FEATURE|FIX|...] Short description`.
 
 
 # Merge Develop To Staging

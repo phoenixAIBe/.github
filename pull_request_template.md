@@ -30,6 +30,7 @@
 - [ ] **Change log**: The change log is complete and finalized for this release.
 - [ ] **Release notes**: The release notes are completed and updated to reflect this release.
 - [ ] **Service version**: The new version of the service has been validated according to the new features and fixes included.
+- [ ] **PR title**: The PR title follows the convention: `vx.y.z - commit ID of develop`.
 - [ ] **Target branch**: The PR targets the staging branch.
 
 
@@ -39,4 +40,5 @@
 - [ ] **Secrets**: Github environment variables are configured with the **correct production versions**.
 - [ ] **Change log**: The change log is complete and finalized for this release.
 - [ ] **Spec**: A finalized version of the specification has been generated in **PDF** format.
+- [ ] **PR title**: The PR title follows the convention: `vx.y.z`.
 - [ ] **Target branch**: The PR targets the main branch.

@@ -19,7 +19,7 @@
 - [ ] **Secrets**: Github environment variables are configured with the **correct dev versions**.
 - [ ] **Sonar**: SonarQube analysis passed successfully.
 - [ ] **PR content**: The PR does contain only changes about one feature.
-- [ ] **PR title**: The PR title follows the convention: `[FEATURE|FIX|...] Short description`.
+- [ ] **PR title**: The PR title follows the convention: `Clear short description`.
 - [ ] **README**: The README file has been updated.
 - [ ] **Target branch**: The PR targets the develop branch.
 - [ ] **Model**: The model has been released on NAS. The README has been updated with download paths.

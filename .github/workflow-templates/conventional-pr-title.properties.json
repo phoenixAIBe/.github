@@ -1,6 +1,0 @@
-{
-  "name": "Conventional PR title",
-  "description": "Fails the pull request when its title does not follow Conventional Commits. Required for release-please to derive the correct version bump on squash merge.",
-  "iconName": "octicon git-commit",
-  "categories": ["Continuous integration"]
-}

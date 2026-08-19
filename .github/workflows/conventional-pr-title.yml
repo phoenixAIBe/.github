@@ -1,0 +1,26 @@
+name: Conventional PR title
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: conventional-pr-title-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-pr-title:
+    name: Conventional Commits
+    runs-on: self-hosted
+    steps:
+      - name: Validate pull request title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf 'extends:\n  - "@commitlint/config-conventional"\n' > "$RUNNER_TEMP/commitlintrc.yml"
+          printf '%s' "$PR_TITLE" | docker run --rm -i \
+            -v "$RUNNER_TEMP/commitlintrc.yml":/commitlintrc.yml:ro \
+            commitlint/commitlint:latest --config /commitlintrc.yml

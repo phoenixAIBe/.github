@@ -1,0 +1,52 @@
+name: Task
+description: Technical work with no direct product-visible change
+type: Task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Branch for the work: `<type>/<issue-number>-<short-slug>`, using the type selected below,
+        e.g. `refactor/91-extract-step-config`.
+
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: Change type
+      description: Determines the conventional commit type, and therefore how release-please treats it.
+      options:
+        - chore — maintenance, dependencies, tooling
+        - refactor — restructuring with no behaviour change
+        - perf — performance improvement
+        - docs — documentation only
+        - test — tests only
+        - ci — pipelines and automation
+        - build — build system or packaging
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs to be done
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why now
+      description: What this unblocks, or what it costs to keep postponing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+    validations:
+      required: true
+
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Customer problem or business request
+    url: https://github.com/phoenixAIBe/requests/issues/new/choose
+    about: For sales and support, or when you do not know which repository is affected.

@@ -6,7 +6,6 @@ body:
     attributes:
       value: |
         Branch for the fix: `fix/<issue-number>-<short-slug>`, e.g. `fix/142-camera-stream-drops`.
-        Do not attach camera images or video from a customer site — reference the clip instead.
 
   - type: input
     id: version
@@ -22,12 +21,19 @@ body:
     attributes:
       label: Environment
       options:
-        - Customer site, in production
+        - Customer
         - Staging
         - Local development
         - CI
     validations:
       required: true
+
+  - type: input
+    id: box-hostname
+    attributes:
+      label: Box hostname
+      description: Optional. Fill it in when the bug was seen on a specific box.
+      placeholder: e.g. paibox-namur-04
 
   - type: textarea
     id: observed

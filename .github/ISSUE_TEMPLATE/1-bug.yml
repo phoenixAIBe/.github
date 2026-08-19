@@ -12,7 +12,7 @@ body:
     attributes:
       label: Affected version
       description: Released tag, deployed image tag, or commit SHA.
-      placeholder: e.g. 3.4.1, or ghcr.io/... :3.4.1, or 9f2c1ab
+      placeholder: 3.4.1, or ghcr.io/... :3.4.1, or 9f2c1ab
     validations:
       required: true
 
@@ -33,7 +33,7 @@ body:
     attributes:
       label: Box hostname
       description: Optional. Fill it in when the bug was seen on a specific box.
-      placeholder: e.g. paibox-namur-04
+      placeholder: paibox-peruwelz-04
 
   - type: textarea
     id: observed

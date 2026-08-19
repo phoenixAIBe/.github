@@ -12,7 +12,7 @@ body:
     id: change-type
     attributes:
       label: Change type
-      description: Determines the conventional commit type, and therefore how release-please treats it.
+      description: Sets the commit type and the branch prefix. Only perf reaches the changelog; the others are deliberately hidden from it.
       options:
         - chore — maintenance, dependencies, tooling
         - refactor — restructuring with no behaviour change
@@ -21,6 +21,7 @@ body:
         - test — tests only
         - ci — pipelines and automation
         - build — build system or packaging
+        - style — formatting only, no code change
     validations:
       required: true
 

@@ -1,0 +1,106 @@
+name: Bug
+description: Incorrect behaviour, regression or malfunction in this repository
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Branch for the fix: `fix/<issue-number>-<short-slug>`, e.g. `fix/142-camera-stream-drops`.
+
+  - type: input
+    id: version
+    attributes:
+      label: Affected version
+      description: Released tag, deployed image tag, or commit SHA.
+      placeholder: e.g. 3.4.1, or ghcr.io/... :3.4.1, or 9f2c1ab
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Customer
+        - Staging
+        - Local development
+        - CI
+    validations:
+      required: true
+
+  - type: input
+    id: box-hostname
+    attributes:
+      label: Box hostname
+      description: Optional. Fill it in when the bug was seen on a specific box.
+      placeholder: e.g. paibox-namur-04
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reproducible
+    attributes:
+      label: Reproducibility
+      options:
+        - Always
+        - Intermittent
+        - Observed once
+        - Not attempted
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Technical depth and breadth of the impact. Scheduling priority is set at triage, not here.
+      options:
+        - Data loss or corruption
+        - Service unavailable, no workaround
+        - Feature broken, workaround exists
+        - Degraded behaviour
+        - Cosmetic
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Include the correlation ID if you have one.
+      render: shell
+
+  - type: input
+    id: intake
+    attributes:
+      label: Related request
+      description: Link to the originating issue in phoenixAIBe/requests, if any.
+      placeholder: https://github.com/phoenixAIBe/requests/issues/42
+
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else

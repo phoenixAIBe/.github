@@ -1,0 +1,52 @@
+name: Feature
+description: New capability or product change in this repository
+type: Feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Branch for the work: `feat/<issue-number>-<short-slug>`, e.g. `feat/158-csv-export`.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What is not possible today, and what it costs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How we verify this is done. One scenario per block.
+      value: |
+        Given
+        When
+        Then
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: input
+    id: intake
+    attributes:
+      label: Related request
+      description: Link to the originating issue in phoenixAIBe/requests, if any.
+      placeholder: https://github.com/phoenixAIBe/requests/issues/42
+
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else

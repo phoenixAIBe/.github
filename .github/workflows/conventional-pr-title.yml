@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 concurrency:
   group: conventional-pr-title-${{ github.event.pull_request.number }}
@@ -18,9 +19,20 @@ jobs:
     steps:
       - name: Validate pull request title
         env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.url }}
         run: |
+          # Read the title from the API rather than from the event payload.
+          # Re-running a workflow replays the original payload, so a title that
+          # was fixed after the first failure would never be re-read.
+          TITLE=$(curl -sS --fail \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$PR_URL" | jq -r '.title')
+
+          echo "Validating: $TITLE"
+
           printf 'extends:\n  - "@commitlint/config-conventional"\n' > "$RUNNER_TEMP/commitlintrc.yml"
-          printf '%s' "$PR_TITLE" | docker run --rm -i \
+          printf '%s' "$TITLE" | docker run --rm -i \
             -v "$RUNNER_TEMP/commitlintrc.yml":/commitlintrc.yml:ro \
             commitlint/commitlint:latest --config /commitlintrc.yml

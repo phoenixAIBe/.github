@@ -16,6 +16,7 @@ jobs:
   check-pr-title:
     name: Conventional Commits
     runs-on: self-hosted
+    timeout-minutes: 5
     steps:
       - name: Validate pull request title
         env:
@@ -25,7 +26,7 @@ jobs:
           # Read the title from the API rather than from the event payload.
           # Re-running a workflow replays the original payload, so a title that
           # was fixed after the first failure would never be re-read.
-          TITLE=$(curl -sS --fail \
+          TITLE=$(curl -sS --fail --retry 3 --retry-connrefused \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             "$PR_URL" | jq -r '.title')
@@ -35,4 +36,4 @@ jobs:
           printf 'extends:\n  - "@commitlint/config-conventional"\n' > "$RUNNER_TEMP/commitlintrc.yml"
           printf '%s' "$TITLE" | docker run --rm -i \
             -v "$RUNNER_TEMP/commitlintrc.yml":/commitlintrc.yml:ro \
-            commitlint/commitlint:latest --config /commitlintrc.yml
+            commitlint/commitlint:21.2.2 --config /commitlintrc.yml

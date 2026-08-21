@@ -1,6 +1,7 @@
 name: Bug
 description: Incorrect behaviour, regression or malfunction in this repository
 type: Bug
+projects: ["phoenixAIBe/9"]
 body:
   - type: markdown
     attributes:

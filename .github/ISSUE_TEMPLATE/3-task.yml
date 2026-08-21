@@ -1,6 +1,7 @@
 name: Task
 description: Technical work with no direct product-visible change
 type: Task
+projects: ["phoenixAIBe/9"]
 body:
   - type: markdown
     attributes:

@@ -1,6 +1,7 @@
 name: Feature
 description: New capability or product change in this repository
 type: Feature
+projects: ["phoenixAIBe/9"]
 body:
   - type: markdown
     attributes:

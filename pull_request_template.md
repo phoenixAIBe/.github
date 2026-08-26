@@ -14,7 +14,6 @@
 - [ ] **Description**: The **What** and **Why** sections are properly filled.
 - [ ] **Linked ticket**: This PR is linked to the corresponding docs.
 - [ ] **Issue**: Related issues are linked.
-- [ ] **Change log**: The change log has been updated.
 - [ ] **.env**: The version of the service has been updated in the **.env** file.
 - [ ] **Secrets**: Github environment variables are configured with the **correct dev versions**.
 - [ ] **Sonar**: SonarQube analysis passed successfully.

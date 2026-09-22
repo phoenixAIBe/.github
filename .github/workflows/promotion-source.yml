@@ -1,0 +1,68 @@
+name: Promotion source
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: promotion-source-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-promotion-source:
+    name: Promotion source
+    runs-on: self-hosted
+    timeout-minutes: 5
+    steps:
+      - name: Check the source branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.url }}
+        run: |
+          PR=$(curl -sS --fail --retry 3 --retry-connrefused \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$PR_URL")
+          BASE=$(printf '%s' "$PR" | jq -r '.base.ref')
+          HEAD=$(printf '%s' "$PR" | jq -r '.head.ref')
+          HEAD_REPO=$(printf '%s' "$PR" | jq -r '.head.repo.full_name // ""')
+          REPO=$(printf '%s' "$PR" | jq -r '.base.repo.full_name')
+
+          case "$BASE" in
+            staging) ALLOWED="develop" ;;
+            main) ALLOWED="staging or a release-please branch" ;;
+            *)
+              echo "No source rule for pull requests into ${BASE}."
+              exit 0
+              ;;
+          esac
+
+          STATUS=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-connrefused \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "${GITHUB_API_URL}/repos/${REPO}/branches/staging")
+          if [ "$STATUS" = "404" ]; then
+            echo "${REPO} has no staging branch, so the develop -> staging -> main flow does not apply."
+            exit 0
+          fi
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::Could not check whether ${REPO} has a staging branch (HTTP ${STATUS}). Re-run this job."
+            exit 1
+          fi
+
+          OK=false
+          if [ "$HEAD_REPO" = "$REPO" ]; then
+            case "${BASE}:${HEAD}" in
+              staging:develop | main:staging | main:release-please--*) OK=true ;;
+            esac
+          fi
+
+          if [ "$OK" != "true" ]; then
+            echo "::error::Pull requests into ${BASE} must come from ${ALLOWED}; this one comes from ${HEAD_REPO}:${HEAD}. Changes go into develop first, then are promoted to staging and main."
+            exit 1
+          fi
+          echo "${HEAD} -> ${BASE}: allowed."

@@ -15,7 +15,7 @@ concurrency:
 jobs:
   check-pr-title:
     name: Conventional Commits
-    runs-on: self-hosted
+    runs-on: ${{ github.event.repository.private && 'self-hosted' || 'ubuntu-latest' }}
     timeout-minutes: 5
     steps:
       - name: Validate pull request title
